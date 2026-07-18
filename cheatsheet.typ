@@ -345,7 +345,9 @@ $B quad a_n=sum_(i=1)^n 1/i$ konvergiert nicht, aber $|a_(n+1)-a_n| -> 0$.
 
 #strat[Strategie – Konvergenz von Folgen]
 - Brüche: grösste Potenz von $n$ ausklammern & kürzen; Reste $a/n^s -> 0$ streichen.
-- Wurzeln in Summe: mit Differenz multiplizieren ($sqrt(a)+sqrt(b)$ mit $sqrt(a)-sqrt(b)$).
+- Differenzen mit Wurzeln: mit dem konjugierten Ausdruck erweitern.
+- Form $0/0$ oder $infinity/infinity$: vereinfachen, ggf. Taylor oder L'Hôpital prüfen.
+- Form $1^oo$, $0^0$ oder $oo^0$: Logarithmus verwenden.
 - Sandwich-Theorem.
 - Vergleich mit Referenz-Folgen.
 - Grenzwert durch Umformen ermitteln.
@@ -463,10 +465,13 @@ $ integral_k^oo f(x)dif x " konv." <==> sum_(n=k)^oo a_n " konv." $
 #strat[Strategie – Konvergenz von Reihen]
 - Spezielle Reihe? (Geometrisch, Teleskop, Harmonisch, Zeta)
 - $lim a_n=0$? (Nullfolgenkriterium)
-- Quotienten- / Wurzelkriterium?
+- Fakultäten oder Exponentialausdrücke: Quotientenkriterium.
+- Terme mit einer $n$-ten Potenz: Wurzelkriterium.
+- Positive Terme: Vergleichs- oder Integraltest.
+- Alternierende Reihe: Leibnizkriterium.
 - Konvergenter Majorant / divergenter Minorant?
-- Leibnizkriterium?
 - Integral Test?
+- Danach immer absolute Konvergenz separat prüfen.
 
 #chapter[Stetigkeit und Funktionen]
 
@@ -1192,6 +1197,13 @@ Form erkennen $->$ passende Methode:
   $M dif x+N dif y=0$, [Exakt], $M_y=N_x; med F_x=M, F_y=N$,
 )
 
+*Grundregeln für 1. Ordnung:*
+- $y'=f(x)g(y)$: Variablen trennen.
+- $y'+p(x)y=q(x)$: integrierender Faktor oder Variation der Konstanten.
+- Lineare DGL mit konstanten Koeffizienten: charakteristisches Polynom.
+- Inhomogene DGL: $y=y_h+y_p$.
+- Anfangsbedingungen erst in die vollständige Lösung einsetzen.
+
 *Trennung der Variablen:* $y'=f(x)g(y)$:
 #steps[
   + $1/(g(y))dif y=f(x)dif x$
@@ -1304,58 +1316,3 @@ Sei $f: D -> RR$ gegeben.
   müssen die Funktionswerte an allen Kandidaten verglichen werden.
 ]
 
-#sub[Welche Methode verwenden?]
-
-#bx[
-  *Grenzwerte*
-
-  - Brüche: höchste Potenz ausklammern.
-  - Differenzen mit Wurzeln: mit dem konjugierten Ausdruck erweitern.
-  - Form $0/0$ oder $infinity/infinity$: vereinfachen,
-    Taylorentwicklung oder L'Hôpital prüfen.
-  - Form $1^infinity$, $0^0$ oder $infinity^0$:
-    Logarithmus verwenden.
-]
-
-#bx[
-  *Reihen*
-
-  - Zuerst prüfen, ob $a_n -> 0$.
-  - Fakultäten oder Exponentialausdrücke:
-    Quotientenkriterium.
-  - Terme mit einer $n$-ten Potenz:
-    Wurzelkriterium.
-  - Positive Terme:
-    Vergleichskriterium.
-  - Alternierende Reihe:
-    Leibnizkriterium.
-  - Danach immer absolute Konvergenz separat prüfen.
-]
-
-#bx[
-  *Integrale*
-
-  - Verkettung mit innerer Ableitung:
-    Substitution.
-  - Produkt unterschiedlicher Funktionstypen:
-    partielle Integration.
-  - Rationale Funktion:
-    Polynomdivision und Partialbruchzerlegung.
-  - Potenzen von Sinus und Kosinus:
-    trigonometrische Identitäten.
-  - Ergebnis durch Ableiten kontrollieren.
-]
-
-#bx[
-  *Differentialgleichungen*
-
-  - $y'=f(x)g(y)$:
-    Variablen trennen.
-  - $y'+p(x)y=q(x)$:
-    integrierender Faktor oder Variation der Konstanten.
-  - Lineare DGL mit konstanten Koeffizienten:
-    charakteristisches Polynom.
-  - Inhomogene DGL:
-    $y=y_h+y_p$.
-  - Anfangsbedingungen erst in die vollständige Lösung einsetzen.
-]
