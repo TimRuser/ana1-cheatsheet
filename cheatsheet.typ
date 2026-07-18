@@ -1317,3 +1317,13 @@ Sei $f: D -> RR$ gegeben.
   müssen die Funktionswerte an allen Kandidaten verglichen werden.
 ]
 
+#block(width: 100%, breakable: false)[
+  #sub[Einheitskreis]
+
+  #align(center)[
+    *Leseschlüssel für die Klammern:* $(cos alpha, sin alpha) = (x, y)$ \
+    *1. Wert: cos($x$), 2. Wert: sin($y$).*
+
+    #image("image.png", width: 80mm)
+  ]
+]
