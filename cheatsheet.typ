@@ -202,6 +202,7 @@ Die $triangle$-Ungleichung gilt auch in $CC$.
 + $z+overline(z)=2Re(z)$, $quad z-overline(z)=2i Im(z)$
 + $overline(z plus.minus w)=overline(z) plus.minus overline(w)$, $quad overline(z w)=overline(z) dot overline(w)$, $quad overline((z/w))=overline(z)/overline(w)$
 + $z=overline(z) <==> z in RR$, $quad overline(z)=-z <==>$ rein imaginär
++ $sqrt(-a)=i sqrt(a)$ $(a>0)$
 
 #sub[Eulersche Formel]
 #bx[
