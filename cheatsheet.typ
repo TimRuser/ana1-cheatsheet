@@ -105,7 +105,7 @@
 
 #block(width: 100%, below: 0.7em, align(
   center,
-  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[T. Ruser],
+  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[X.Winkelmann],
 ))
 
 #chapter[Reelle und komplexe Zahlen]
@@ -217,7 +217,9 @@ Die $triangle$-Ungleichung gilt auch in $CC$.
 #sub[Normal- und Polarform]
 #D *Normalform (kartesisch):* $z=x+i y$.
 
-*Polarform:* $z=r e^(i phi)$, mit $r=|z|>=0$ (Abstand zum Ursprung) und Polarwinkel $phi in (-pi,pi]$, $phi=arg(z)$.
+*Trigonometrische Form:* $z=r(cos phi+i sin phi)$.
+
+*Polarform (Exponentialform):* $z=r e^(i phi)$, mit $r=|z|>=0$ (Abstand zum Ursprung) und Polarwinkel $phi in (-pi,pi]$, $phi=arg(z)$.
 
 *Umrechnung.* Polar $->$ Normal: $x=r cos phi, med y=r sin phi$. Normal $->$ Polar: $r=sqrt(x^2+y^2)$ und
 $ phi=arctan(y/x) + cases(0 & x>0, +pi & x<0\, y>=0, -pi & x<0\, y<0) $
