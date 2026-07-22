@@ -105,7 +105,7 @@
 
 #block(width: 100%, below: 0.7em, align(
   center,
-  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[T. Ruser],
+  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[X.Winkelmann],
 ))
 
 #chapter[Reelle und komplexe Zahlen]
@@ -202,6 +202,7 @@ Die $triangle$-Ungleichung gilt auch in $CC$.
 + $z+overline(z)=2Re(z)$, $quad z-overline(z)=2i Im(z)$
 + $overline(z plus.minus w)=overline(z) plus.minus overline(w)$, $quad overline(z w)=overline(z) dot overline(w)$, $quad overline((z/w))=overline(z)/overline(w)$
 + $z=overline(z) <==> z in RR$, $quad overline(z)=-z <==>$ rein imaginär
++ $sqrt(-a)=i sqrt(a)$ $(a>0)$
 
 #sub[Eulersche Formel]
 #bx[
@@ -216,7 +217,9 @@ Die $triangle$-Ungleichung gilt auch in $CC$.
 #sub[Normal- und Polarform]
 #D *Normalform (kartesisch):* $z=x+i y$.
 
-*Polarform:* $z=r e^(i phi)$, mit $r=|z|>=0$ (Abstand zum Ursprung) und Polarwinkel $phi in (-pi,pi]$, $phi=arg(z)$.
+*Trigonometrische Form:* $z=r(cos phi+i sin phi)$.
+
+*Polarform (Exponentialform):* $z=r e^(i phi)$, mit $r=|z|>=0$ (Abstand zum Ursprung) und Polarwinkel $phi in (-pi,pi]$, $phi=arg(z)$.
 
 *Umrechnung.* Polar $->$ Normal: $x=r cos phi, med y=r sin phi$. Normal $->$ Polar: $r=sqrt(x^2+y^2)$ und
 $ phi=arctan(y/x) + cases(0 & x>0, +pi & x<0\, y>=0, -pi & x<0\, y<0) $
@@ -345,7 +348,9 @@ $B quad a_n=sum_(i=1)^n 1/i$ konvergiert nicht, aber $|a_(n+1)-a_n| -> 0$.
 
 #strat[Strategie – Konvergenz von Folgen]
 - Brüche: grösste Potenz von $n$ ausklammern & kürzen; Reste $a/n^s -> 0$ streichen.
-- Wurzeln in Summe: mit Differenz multiplizieren ($sqrt(a)+sqrt(b)$ mit $sqrt(a)-sqrt(b)$).
+- Differenzen mit Wurzeln: mit dem konjugierten Ausdruck erweitern.
+- Form $0/0$ oder $infinity/infinity$: vereinfachen, ggf. Taylor oder L'Hôpital prüfen.
+- Form $1^oo$, $0^0$ oder $oo^0$: Logarithmus verwenden.
 - Sandwich-Theorem.
 - Vergleich mit Referenz-Folgen.
 - Grenzwert durch Umformen ermitteln.
@@ -463,10 +468,13 @@ $ integral_k^oo f(x)dif x " konv." <==> sum_(n=k)^oo a_n " konv." $
 #strat[Strategie – Konvergenz von Reihen]
 - Spezielle Reihe? (Geometrisch, Teleskop, Harmonisch, Zeta)
 - $lim a_n=0$? (Nullfolgenkriterium)
-- Quotienten- / Wurzelkriterium?
+- Fakultäten oder Exponentialausdrücke: Quotientenkriterium.
+- Terme mit einer $n$-ten Potenz: Wurzelkriterium.
+- Positive Terme: Vergleichs- oder Integraltest.
+- Alternierende Reihe: Leibnizkriterium.
 - Konvergenter Majorant / divergenter Minorant?
-- Leibnizkriterium?
 - Integral Test?
+- Danach immer absolute Konvergenz separat prüfen.
 
 #chapter[Stetigkeit und Funktionen]
 
@@ -592,8 +600,10 @@ Erweiterung: $lim_(x->x_0^+) f=+oo$ falls $forall epsilon exists delta forall x 
 + lok. Maximum in $x_0$: $f'(x_0)=0$ und $f''(x_0)<0$
 + lok. Minimum in $x_0$: $f'(x_0)=0$ und $f''(x_0)>0$
 + lok. Extremum: $f'(x_0)=0$ und $f''(x_0) eq.not 0$
-+ Wendepunkt: $f''(x_0)=0$
-+ Sattelpunkt: $f'(x_0)=0$ und $f''(x_0)=0$
++ Wendepunkt: Das Krümmungsverhalten wechselt bei $x_0$.
+  Falls $f''$ stetig ist, wechselt $f''$ dort das Vorzeichen.
++ Sattelpunkt: Wendepunkt mit waagrechter Tangente,
+  also zusätzlich $f'(x_0)=0$.
 
 Für $f,g: [a,b]->RR$ stetig, in $(a,b)$ diff.bar:
 + $f'=0$ auf $(a,b) => f$ konstant
@@ -620,14 +630,102 @@ Gilt auch für $b=+oo, x->a^+, lambda=+oo, lim f=lim g=oo$.
 
 Form "$oo/oo$": umschreiben; "$0 dot oo$": $f/(1/g)$; "$oo-oo$": gleicher Nenner.
 
-#sub[Konvexität]
-$f$ ist [streng] *konvex* auf $I$, falls $forall x<=[<]y, lambda in [0,1]$:
-$ f(lambda x+(1-lambda)y) <= [<] lambda f(x)+(1-lambda)f(y) $
-+ Summe zweier konvexer Funktionen ist konvex
-+ konvex $<==> (f(x)-f(x_0))/(x-x_0) <= (f(x_1)-f(x))/(x_1-x)$ für $x_0<=x<=x_1$
-+ [streng] konvex $<==> f'$ [streng] monoton wachsend
+#sub[Krümmungsverhalten: Konvexität und Konkavität]
 
-#B Konkavität: Ungleichzeichen umkehren.
+Sei $f: I -> RR$.
+
+#bx[
+  #D $f$ ist [streng] *konvex* auf $I$, falls für alle
+  $x,y in I$ und $lambda in [0,1]$ gilt:
+
+  $
+    f(lambda x + (1-lambda)y)
+    <= [<]
+    lambda f(x) + (1-lambda)f(y).
+  $
+
+  Der Graph liegt zwischen zwei Punkten unterhalb der
+  Verbindungsgeraden.
+]
+
+#bx[
+  #D $f$ ist [streng] *konkav* auf $I$, falls für alle
+  $x,y in I$ und $lambda in [0,1]$ gilt:
+
+  $
+    f(lambda x + (1-lambda)y)
+    >= [>]
+    lambda f(x) + (1-lambda)f(y).
+  $
+
+  Der Graph liegt zwischen zwei Punkten oberhalb der
+  Verbindungsgeraden.
+]
+
+Falls $f$ differenzierbar ist:
+
+$
+  f " konvex"
+  <==>
+  f' " monoton wachsend",
+$
+
+$
+  f " konkav"
+  <==>
+  f' " monoton fallend".
+$
+
+Falls $f$ zweimal differenzierbar ist:
+
+$
+  f " konvex"
+  <==>
+  f'' >= 0,
+  quad
+  f " streng konvex"
+  <=
+  f'' > 0,
+$
+
+$
+  f " konkav"
+  <==>
+  f'' <= 0,
+  quad
+  f " streng konkav"
+  <=
+  f'' < 0.
+$
+
+#K Für $x_0 < x < x_1$ gilt:
+
+$
+  f " konvex"
+  <==>
+  (f(x)-f(x_0))/(x-x_0)
+  <=
+  (f(x_1)-f(x))/(x_1-x),
+$
+
+bei Konkavität gilt das umgekehrte Ungleichheitszeichen.
+
+#B Summen konvexer Funktionen und nichtnegative Vielfache
+konvexer Funktionen sind konvex. Analog für konkave Funktionen.
+
+#bx[
+  *Wendestelle*
+
+  Eine Stelle $x_0$ ist eine Wendestelle, wenn sich das
+  Krümmungsverhalten dort ändert:
+
+  $
+    f'' " wechselt bei " x_0 " das Vorzeichen".
+  $
+
+  Die Bedingung $f''(x_0)=0$ allein ist nur notwendig,
+  aber nicht hinreichend.
+]
 
 #sub[Höhere Ableitungen]
 + $f$ ist $n$-mal diff.bar in $D$, falls $f^((n-1))$ diff.bar ist. $n$-mal diff.bar $=> (n-1)$-mal stetig diff.bar.
@@ -667,8 +765,6 @@ $f'(x_0)=dots=f^((n))(x_0)=0$:
 + $n$ gerade, $x_0$ lok. Extremalstelle $=> f^((n+1))(x_0)=0$
 + $n$ ungerade, $f^((n+1))(x_0)>0 => x_0$ strikte lok. Minimalstelle
 + $n$ ungerade, $f^((n+1))(x_0)<0 => x_0$ strikte lok. Maximalstelle
-
-Keine Extremalstelle: $f'(x_0)=0 =>$ Sattelpunkt; $f''(x_0)=0 =>$ Wendepunkt.
 
 #chapter[Integralrechnung]
 
@@ -783,11 +879,15 @@ $f: (a,b]->RR$ integrierbar, falls $lim_(epsilon->0^+) integral_(a+epsilon)^b f$
 Bsp. $f(t)=t^x$: auf $(0,1)$ integrierbar für $x>-1$: $integral_0^1 t^x dif t=1/(x+1)$; auf $[1,oo)$ für $x<-1$: $integral_1^oo t^x dif t = -1/(1+x)$.
 
 #sub[Stammfunktionen rationaler Funktionen]
-$R(x)=P(x)/Q(x)$. Falls $deg P>=deg Q$: Polynomdivision.
+$R(x)=P(x)/Q(x)$. *Vorgehen:* Falls $deg P>=deg Q$: Polynomdivision, dann $Q$ über $RR$ faktorisieren und die Partialbrüche ansetzen.
 
-Nullstellen von $Q$ mit Vielfachheit bestimmen.
-$ R(x)=sum_(k=1)^N R_(k)(x)+sum_(k=1)^M Z_(k)(x) $
-($N$ reelle, $M$ komplexe Nullstellen). Reelle Nullstelle:
+*Ansatz pro Faktor von $Q$:*
+- Linearer Faktor $(x-alpha)^m$: $sum_(j=1)^m A_j/(x-alpha)^j$
+- Irreduzibles Quadrat $q(x)^m$: $sum_(j=1)^m (B_j x+C_j)/(q(x)^j)$
+
+*Koeffizienten bestimmen:* auf gemeinsamen Nenner bringen und Koeffizienten vergleichen; bei einfachen linearen Faktoren direkt $x=alpha$ einsetzen (Zuhaltemethode), bei mehrfachen Faktoren ggf. ableiten.
+
+*Integration.* Reeller linearer Faktor:
 $ integral 1/(x-gamma_i)^n = cases(ln(x-gamma_i) & n=1, (-1)/((n-1)(x-gamma_i)^(n-1)) & "sonst") $
 Komplexe: $(A+B x)/((x-alpha)^2+beta^2)^j = (B(x-alpha))/(...)^j + (A+B alpha)/(...)^j$; letzter Term via Sub. $(x-alpha)=beta t$.
 
@@ -1104,6 +1204,13 @@ Form erkennen $->$ passende Methode:
   $M dif x+N dif y=0$, [Exakt], $M_y=N_x; med F_x=M, F_y=N$,
 )
 
+*Grundregeln für 1. Ordnung:*
+- $y'=f(x)g(y)$: Variablen trennen.
+- $y'+p(x)y=q(x)$: integrierender Faktor oder Variation der Konstanten.
+- Lineare DGL mit konstanten Koeffizienten: charakteristisches Polynom.
+- Inhomogene DGL: $y=y_h+y_p$.
+- Anfangsbedingungen erst in die vollständige Lösung einsetzen.
+
 *Trennung der Variablen:* $y'=f(x)g(y)$:
 #steps[
   + $1/(g(y))dif y=f(x)dif x$
@@ -1119,11 +1226,126 @@ Form erkennen $->$ passende Methode:
   + Rücksubstitution
 ]
 
-*Variation der Konstanten* ($y'+f(x)y=g(x)$):
+*Variation der Konstanten* ($y' + f(x)y = g(x)$):
+
+Sei $F(x) = integral f(x) dif x$. Dann ist die allgemeine Lösung der homogenen Gleichung
+
+$ y_(h)(x) = A e^(-F(x)). $
+
 #steps[
-  + homogene Lösung $y_(h)(x)=A e^(-F(x))$, $F$ Stammfkt. von $f$
-  + $A$ durch $C(x)$ ersetzen: $y_(p)(x)=C(x)e^(-F(x))$
+  + Ersetze die Konstante $A$ durch eine Funktion $C(x)$:
+
+    $ y_(p)(x) = C(x)e^(-F(x)). $
+
+  + Ableiten und Einsetzen in $y' + f(x)y = g(x)$ ergibt:
+
+    $ C'(x)e^(-F(x)) = g(x). $
+
+  + Somit gilt:
+
+    $ C'(x) = g(x)e^(F(x)). $
+
+  + Integrieren:
+
+    $ C(x) = C_0 + integral g(x)e^(F(x)) dif x. $
+]
+
+#bx[
+  #S Die allgemeine Lösung von $y' + f(x)y = g(x)$ ist
+
+  $ y(x) = e^(-F(x)) lr(C_0 + integral g(x)e^(F(x)) dif x), quad F'(x) = f(x). $
 ]
 
 #sub[Wichtige Funktionen im Überblick]
 #figure(image("functions.png", width: 100%))
+
+#sub[Strategie – Kurvendiskussion]
+
+Sei $f: D -> RR$ gegeben.
+
+#steps[
+  + *Definitionsbereich $D$:* Nenner darf nicht null sein,
+    Argument eines Logarithmus muss positiv sein und bei geraden
+    Wurzeln muss der Radikand nichtnegativ sein.
+
+  + *Symmetrie prüfen:*
+    $f(-x)=f(x)$ bedeutet Achsensymmetrie zur $y$-Achse.
+    $f(-x)=-f(x)$ bedeutet Punktsymmetrie zum Ursprung.
+
+  + *Achsenschnittpunkte:*
+    Nullstellen aus $f(x)=0$ bestimmen.
+    Falls $0 in D$, ist der Schnittpunkt mit der $y$-Achse
+    $(0,f(0))$.
+
+  + *Grenzwerte:* Verhalten für $x -> plus.minus infinity$ und
+    an Randstellen des Definitionsbereichs untersuchen.
+
+  + *Asymptoten:*
+    Bei $lim_(x->a) |f(x)|=infinity$ liegt eine vertikale
+    Asymptote $x=a$ vor.
+    Bei $lim_(x->plus.minus infinity) f(x)=c$ liegt die horizontale
+    Asymptote $y=c$ vor.
+
+  + *Erste Ableitung:* Kritische Stellen bestimmen:
+    Randpunkte, Stellen ohne Ableitung und Lösungen von $f'(x)=0$.
+
+  + *Monotonie:* Vorzeichen von $f'$ auf den entstehenden
+    Intervallen untersuchen.
+
+  + *Extrema:*
+    Vorzeichenwechsel $+ -> -$ von $f'$ bedeutet lokales Maximum.
+    Vorzeichenwechsel $- -> +$ bedeutet lokales Minimum.
+
+  + *Zweite Ableitung:* Lösungen von $f''(x)=0$ bestimmen und
+    Vorzeichen von $f''$ prüfen.
+
+  + *Krümmung:*
+    $f''>0$ bedeutet konvex,
+    $f''<0$ bedeutet konkav.
+    Ein Wendepunkt benötigt einen Krümmungswechsel.
+
+  + *Werte einsetzen:* Koordinaten von Extrem- und Wendepunkten
+    durch Einsetzen in $f$ bestimmen.
+
+  + Alle Ergebnisse zu einer Skizze zusammensetzen.
+]
+
+#bx[
+  #B *Kandidaten für Extremstellen*
+
+  Auf einem Intervall können Extremstellen auftreten:
+
+  - an Randpunkten,
+  - an Stellen, an denen $f$ nicht differenzierbar ist,
+  - an Stellen mit $f'(x)=0$.
+
+  Für globale Extrema auf einem abgeschlossenen Intervall $[a,b]$
+  müssen die Funktionswerte an allen Kandidaten verglichen werden.
+]
+
+#block(width: 100%, breakable: false)[
+  #sub[Einheitskreis]
+
+  #align(center)[
+    *Leseschlüssel für die Klammern:* $(cos alpha, sin alpha) = (x, y)$ \
+    *1. Wert: cos($x$), 2. Wert: sin($y$).*
+
+    #image("image.png", width: 80mm)
+  ]
+]
+
+#chapter[Task Examples]
+
+#sub[Komplexe Nullstelle]
+$P(x)=x^3-x^2+x+1+a$ und $P(-i)=0$:
+$ 0=P(-i)=i+1-i+1+a=a+2 => a=-2. $
+$ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
+
+#block(width: 100%, breakable: false)[
+  #sub[Konvergenz mit der $epsilon$-Definition]
+  *Aufgabe:* Zeige $a_n=1/n -> 0$.
+
+  Sei $epsilon>0$. Wähle $N in NN$ mit $N>1/epsilon$. Dann gilt für alle $n>=N$:
+  $ |a_n-0|=1/n<=1/N<epsilon. $
+  Also $a_n -> 0$.
+]
