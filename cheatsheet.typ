@@ -879,11 +879,15 @@ $f: (a,b]->RR$ integrierbar, falls $lim_(epsilon->0^+) integral_(a+epsilon)^b f$
 Bsp. $f(t)=t^x$: auf $(0,1)$ integrierbar für $x>-1$: $integral_0^1 t^x dif t=1/(x+1)$; auf $[1,oo)$ für $x<-1$: $integral_1^oo t^x dif t = -1/(1+x)$.
 
 #sub[Stammfunktionen rationaler Funktionen]
-$R(x)=P(x)/Q(x)$. Falls $deg P>=deg Q$: Polynomdivision.
+$R(x)=P(x)/Q(x)$. *Vorgehen:* Falls $deg P>=deg Q$: Polynomdivision, dann $Q$ über $RR$ faktorisieren und die Partialbrüche ansetzen.
 
-Nullstellen von $Q$ mit Vielfachheit bestimmen.
-$ R(x)=sum_(k=1)^N R_(k)(x)+sum_(k=1)^M Z_(k)(x) $
-($N$ reelle, $M$ komplexe Nullstellen). Reelle Nullstelle:
+*Ansatz pro Faktor von $Q$:*
+- Linearer Faktor $(x-alpha)^m$: $sum_(j=1)^m A_j/(x-alpha)^j$
+- Irreduzibles Quadrat $q(x)^m$: $sum_(j=1)^m (B_j x+C_j)/(q(x)^j)$
+
+*Koeffizienten bestimmen:* auf gemeinsamen Nenner bringen und Koeffizienten vergleichen; bei einfachen linearen Faktoren direkt $x=alpha$ einsetzen (Zuhaltemethode), bei mehrfachen Faktoren ggf. ableiten.
+
+*Integration.* Reeller linearer Faktor:
 $ integral 1/(x-gamma_i)^n = cases(ln(x-gamma_i) & n=1, (-1)/((n-1)(x-gamma_i)^(n-1)) & "sonst") $
 Komplexe: $(A+B x)/((x-alpha)^2+beta^2)^j = (B(x-alpha))/(...)^j + (A+B alpha)/(...)^j$; letzter Term via Sub. $(x-alpha)=beta t$.
 
@@ -1328,4 +1332,20 @@ Sei $f: D -> RR$ gegeben.
 
     #image("image.png", width: 80mm)
   ]
+]
+
+#chapter[Task Examples]
+
+#sub[Komplexe Nullstelle]
+$P(x)=x^3-x^2+x+1+a$ und $P(-i)=0$:
+$ 0=P(-i)=i+1-i+1+a=a+2 => a=-2. $
+$ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
+
+#block(width: 100%, breakable: false)[
+  #sub[Konvergenz mit der $epsilon$-Definition]
+  *Aufgabe:* Zeige $a_n=1/n -> 0$.
+
+  Sei $epsilon>0$. Wähle $N in NN$ mit $N>1/epsilon$. Dann gilt für alle $n>=N$:
+  $ |a_n-0|=1/n<=1/N<epsilon. $
+  Also $a_n -> 0$.
 ]
