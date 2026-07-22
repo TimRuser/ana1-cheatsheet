@@ -1296,6 +1296,16 @@ $ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
   Also $a_n -> 0$.
 ]
 
+#block(width: 100%, breakable: false)[
+  #sub[Monotone Konvergenz]
+  *Aufgabe:* Zeige $lim_(n->oo) a^n/(n!) = 0$ für $a>0$.
+
+  Setze $b_n=a^n/n!$. Für $n+1>a$ gilt
+  $ b_(n+1)/b_n=a/(n+1)<1. $
+  Also ist $(b_n)$ schliesslich fallend und durch $0$ nach unten beschränkt, somit $b_n->L$. Da $(b_n)$ beschränkt ist,
+  $ L=lim b_(n+1)=lim a/(n+1) b_n=0. $
+]
+
 #chapter[Algebraic Tricks]
 
 #sub[Polynome und Brüche]
