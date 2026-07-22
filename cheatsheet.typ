@@ -105,7 +105,7 @@
 
 #block(width: 100%, below: 0.7em, align(
   center,
-  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[X.Winkelmann],
+  text(size: 17pt)[Analysis I] + linebreak() + text(size: 8pt, style: "italic")[T. Ruser],
 ))
 
 #chapter[Reelle und komplexe Zahlen]
@@ -348,9 +348,9 @@ $B quad a_n=sum_(i=1)^n 1/i$ konvergiert nicht, aber $|a_(n+1)-a_n| -> 0$.
 
 #strat[Strategie – Konvergenz von Folgen]
 - Brüche: grösste Potenz von $n$ ausklammern & kürzen; Reste $a/n^s -> 0$ streichen.
-- Differenzen mit Wurzeln: mit dem konjugierten Ausdruck erweitern.
-- Form $0/0$ oder $infinity/infinity$: vereinfachen, ggf. Taylor oder L'Hôpital prüfen.
-- Form $1^oo$, $0^0$ oder $oo^0$: Logarithmus verwenden.
+- Differenzen mit Wurzeln: konjugiert erweitern ($->$ Binom Trick).
+- Form $0/0$, $oo/oo$: vereinfachen, sonst Taylor oder L'Hospital.
+- Form $1^oo$, $0^0$, $oo^0$: logarithmieren ($->$ Log Trick).
 - Sandwich-Theorem.
 - Vergleich mit Referenz-Folgen.
 - Grenzwert durch Umformen ermitteln.
@@ -468,13 +468,11 @@ $ integral_k^oo f(x)dif x " konv." <==> sum_(n=k)^oo a_n " konv." $
 #strat[Strategie – Konvergenz von Reihen]
 - Spezielle Reihe? (Geometrisch, Teleskop, Harmonisch, Zeta)
 - $lim a_n=0$? (Nullfolgenkriterium)
-- Fakultäten oder Exponentialausdrücke: Quotientenkriterium.
-- Terme mit einer $n$-ten Potenz: Wurzelkriterium.
-- Positive Terme: Vergleichs- oder Integraltest.
-- Alternierende Reihe: Leibnizkriterium.
-- Konvergenter Majorant / divergenter Minorant?
-- Integral Test?
-- Danach immer absolute Konvergenz separat prüfen.
+- Fakultäten / Exponentialausdrücke: Quotientenkriterium.
+- Terme mit $n$-ter Potenz: Wurzelkriterium.
+- Positive Terme: konvergenter Majorant / divergenter Minorant, sonst Integraltest.
+- Alternierend: Leibnizkriterium.
+- Danach absolute Konvergenz separat prüfen.
 
 #chapter[Stetigkeit und Funktionen]
 
@@ -684,7 +682,7 @@ $
   f'' >= 0,
   quad
   f " streng konvex"
-  <=
+  <==
   f'' > 0,
 $
 
@@ -694,7 +692,7 @@ $
   f'' <= 0,
   quad
   f " streng konkav"
-  <=
+  <==
   f'' < 0.
 $
 
@@ -765,6 +763,21 @@ $f'(x_0)=dots=f^((n))(x_0)=0$:
 + $n$ gerade, $x_0$ lok. Extremalstelle $=> f^((n+1))(x_0)=0$
 + $n$ ungerade, $f^((n+1))(x_0)>0 => x_0$ strikte lok. Minimalstelle
 + $n$ ungerade, $f^((n+1))(x_0)<0 => x_0$ strikte lok. Maximalstelle
+
+#strat[Strategie – Kurvendiskussion]
+Für $f: D->RR$ der Reihe nach:
+#steps[
+  + *Definitionsbereich $D$:* Nenner $eq.not 0$, Log-Argument $>0$, Radikand $>=0$ (gerade Wurzeln).
+  + *Symmetrie:* $f(-x)=f(x)$ achsensymmetrisch; $f(-x)=-f(x)$ punktsymmetrisch.
+  + *Achsenschnittpunkte:* $f(x)=0$ lösen; falls $0 in D$, $y$-Achse bei $(0,f(0))$.
+  + *Grenzwerte:* $x->plus.minus oo$ und Randstellen von $D$.
+  + *Asymptoten:* $lim_(x->a)|f|=oo => $ vertikal $x=a$; $lim_(x->plus.minus oo)f=c => $ horizontal $y=c$.
+  + *Kandidaten:* Randpunkte von $D$, Stellen ohne Ableitung, Lösungen von $f'(x)=0$.
+  + *Monotonie & Extrema:* Vorzeichen von $f'$ zwischen den Kandidaten ($->$ Aussagen der Ableitung).
+  + *Krümmung & Wendestellen:* $f''(x)=0$ lösen, Vorzeichen von $f''$ prüfen ($->$ Krümmungsverhalten).
+  + *Werte einsetzen:* Koordinaten der Extrem- und Wendepunkte via $f$; alles zur Skizze zusammensetzen.
+]
+#B Globale Extrema auf $[a,b]$: Funktionswerte an *allen* Kandidaten vergleichen.
 
 #chapter[Integralrechnung]
 
@@ -975,6 +988,12 @@ Arc: $arcsin: [-1,1]->[-pi/2,pi/2]$; $arccos: [-1,1]->[0,pi]$; $arctan: RR->(-pi
   $cos$, $1$, $sqrt(3)/2$, $sqrt(2)/2$, $1/2$, $0$, $-1/2$, $-sqrt(3)/2$, $-1$, $0$,
   $tan$, $0$, $sqrt(3)/3$, $1$, $sqrt(3)$, $-$, $-sqrt(3)$, $-sqrt(3)/3$, $0$, $-$,
 )))
+
+#block(width: 100%, breakable: false)[
+  *Einheitskreis.* Ein Punkt auf dem Kreis ist $(x,y)=(cos alpha, sin alpha)$: der 1. Wert ist $cos alpha$, der 2. Wert $sin alpha$.
+
+  #align(center, image("einheitskreis.png", width: 80mm))
+]
 
 #sub[Hyperbolische Funktionen]
 $cosh x=(e^x+e^(-x))/2: RR->[1,oo)$; \
@@ -1198,7 +1217,7 @@ Form erkennen $->$ passende Methode:
     [*Form*], [*Methode*], [*Ansatz \/ Substitution*],
   ),
   $y'=f(x)g(y)$, [TrennVar], $integral (dif y)/(g(y))=integral f(x)dif x$,
-  $y'=g(y\/x)$, [Ähnlichkeit], $z=y\/x, med y=x z$,
+  $y'=g(y\/x)$, [Homogen], [$z=y\/x: med x z'=g(z)-z$ (trennbar)],
   $y'=f(a x+b y+c)$, [LinSub], $z=a x+b y+c$,
   $y'+f(x)y=g(x)$, [VarKonst], $y=C(x)e^(-F(x)), med F'=f$,
   $M dif x+N dif y=0$, [Exakt], $M_y=N_x; med F_x=M, F_y=N$,
@@ -1206,6 +1225,8 @@ Form erkennen $->$ passende Methode:
 
 *Grundregeln für 1. Ordnung:*
 - $y'=f(x)g(y)$: Variablen trennen.
+- $y'=g(y\/x)$ (homogen, rechte Seite hängt nur von $y\/x$ ab):
+  $z=y\/x$ substituieren $->$ trennbar.
 - $y'+p(x)y=q(x)$: integrierender Faktor oder Variation der Konstanten.
 - Lineare DGL mit konstanten Koeffizienten: charakteristisches Polynom.
 - Inhomogene DGL: $y=y_h+y_p$.
@@ -1253,86 +1274,11 @@ $ y_(h)(x) = A e^(-F(x)). $
 #bx[
   #S Die allgemeine Lösung von $y' + f(x)y = g(x)$ ist
 
-  $ y(x) = e^(-F(x)) lr(C_0 + integral g(x)e^(F(x)) dif x), quad F'(x) = f(x). $
+  $ y(x) = e^(-F(x)) lr((C_0 + integral g(x)e^(F(x)) dif x)), quad F'(x) = f(x). $
 ]
 
 #sub[Wichtige Funktionen im Überblick]
 #figure(image("functions.png", width: 100%))
-
-#sub[Strategie – Kurvendiskussion]
-
-Sei $f: D -> RR$ gegeben.
-
-#steps[
-  + *Definitionsbereich $D$:* Nenner darf nicht null sein,
-    Argument eines Logarithmus muss positiv sein und bei geraden
-    Wurzeln muss der Radikand nichtnegativ sein.
-
-  + *Symmetrie prüfen:*
-    $f(-x)=f(x)$ bedeutet Achsensymmetrie zur $y$-Achse.
-    $f(-x)=-f(x)$ bedeutet Punktsymmetrie zum Ursprung.
-
-  + *Achsenschnittpunkte:*
-    Nullstellen aus $f(x)=0$ bestimmen.
-    Falls $0 in D$, ist der Schnittpunkt mit der $y$-Achse
-    $(0,f(0))$.
-
-  + *Grenzwerte:* Verhalten für $x -> plus.minus infinity$ und
-    an Randstellen des Definitionsbereichs untersuchen.
-
-  + *Asymptoten:*
-    Bei $lim_(x->a) |f(x)|=infinity$ liegt eine vertikale
-    Asymptote $x=a$ vor.
-    Bei $lim_(x->plus.minus infinity) f(x)=c$ liegt die horizontale
-    Asymptote $y=c$ vor.
-
-  + *Erste Ableitung:* Kritische Stellen bestimmen:
-    Randpunkte, Stellen ohne Ableitung und Lösungen von $f'(x)=0$.
-
-  + *Monotonie:* Vorzeichen von $f'$ auf den entstehenden
-    Intervallen untersuchen.
-
-  + *Extrema:*
-    Vorzeichenwechsel $+ -> -$ von $f'$ bedeutet lokales Maximum.
-    Vorzeichenwechsel $- -> +$ bedeutet lokales Minimum.
-
-  + *Zweite Ableitung:* Lösungen von $f''(x)=0$ bestimmen und
-    Vorzeichen von $f''$ prüfen.
-
-  + *Krümmung:*
-    $f''>0$ bedeutet konvex,
-    $f''<0$ bedeutet konkav.
-    Ein Wendepunkt benötigt einen Krümmungswechsel.
-
-  + *Werte einsetzen:* Koordinaten von Extrem- und Wendepunkten
-    durch Einsetzen in $f$ bestimmen.
-
-  + Alle Ergebnisse zu einer Skizze zusammensetzen.
-]
-
-#bx[
-  #B *Kandidaten für Extremstellen*
-
-  Auf einem Intervall können Extremstellen auftreten:
-
-  - an Randpunkten,
-  - an Stellen, an denen $f$ nicht differenzierbar ist,
-  - an Stellen mit $f'(x)=0$.
-
-  Für globale Extrema auf einem abgeschlossenen Intervall $[a,b]$
-  müssen die Funktionswerte an allen Kandidaten verglichen werden.
-]
-
-#block(width: 100%, breakable: false)[
-  #sub[Einheitskreis]
-
-  #align(center)[
-    *Leseschlüssel für die Klammern:* $(cos alpha, sin alpha) = (x, y)$ \
-    *1. Wert: cos($x$), 2. Wert: sin($y$).*
-
-    #image("image.png", width: 80mm)
-  ]
-]
 
 #chapter[Task Examples]
 
