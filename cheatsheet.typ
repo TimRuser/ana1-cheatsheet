@@ -891,20 +891,27 @@ $f: (a,b]->RR$ integrierbar, falls $lim_(epsilon->0^+) integral_(a+epsilon)^b f$
 
 Bsp. $f(t)=t^x$: auf $(0,1)$ integrierbar für $x>-1$: $integral_0^1 t^x dif t=1/(x+1)$; auf $[1,oo)$ für $x<-1$: $integral_1^oo t^x dif t = -1/(1+x)$.
 
-#sub[Stammfunktionen rationaler Funktionen]
-$R(x)=P(x)/Q(x)$. *Vorgehen:* Falls $deg P>=deg Q$: Polynomdivision, dann $Q$ über $RR$ faktorisieren und die Partialbrüche ansetzen.
+#sub[Partialbruchzerlegung]
+Ziel: $R(x)=P(x)/Q(x)$ als Summe einfach integrierbarer Brüche schreiben.
 
-*Ansatz pro Faktor von $Q$:*
-- Linearer Faktor $(x-alpha)^m$: $sum_(j=1)^m A_j/(x-alpha)^j$
-- Irreduzibles Quadrat $q(x)^m$: $sum_(j=1)^m (B_j x+C_j)/(q(x)^j)$
+#steps[
+  + Falls $deg P>=deg Q$: Polynomdivision.
+  + $Q$ über $RR$ faktorisieren (quadratisch irreduzibel $<==> p^2-4q<0$).
+  + *Ansatz* pro Faktor, mit Vielfachheit:
+    - $(x-alpha)^m: quad sum_(k=1)^m A_k/(x-alpha)^k$
+    - $(x^2+p x+q)^n: quad sum_(k=1)^n (B_k x+C_k)/((x^2+p x+q)^k)$
+  + Mit $Q$ multiplizieren, Koeffizienten vergleichen oder $x$-Werte einsetzen ($x=alpha$: Zuhaltemethode).
+  + Gliedweise integrieren.
+]
 
-*Koeffizienten bestimmen:* auf gemeinsamen Nenner bringen und Koeffizienten vergleichen; bei einfachen linearen Faktoren direkt $x=alpha$ einsetzen (Zuhaltemethode), bei mehrfachen Faktoren ggf. ableiten.
+*Grundintegrale.*
+$ integral (dif x)/(x-a) = ln|x-a|, quad integral (dif x)/((x-a)^n) = (-1)/((n-1)(x-a)^(n-1)) $
+$ integral (2x+p)/(x^2+p x+q) dif x = ln|x^2+p x+q| $
+$ integral (dif x)/(x^2+p x+q) = 2/sqrt(4q-p^2) arctan((2x+p)/sqrt(4q-p^2)) $
 
-*Integration.* Reeller linearer Faktor:
-$ integral 1/(x-gamma_i)^n = cases(ln(x-gamma_i) & n=1, (-1)/((n-1)(x-gamma_i)^(n-1)) & "sonst") $
-Komplexe: $(A+B x)/((x-alpha)^2+beta^2)^j = (B(x-alpha))/(...)^j + (A+B alpha)/(...)^j$; letzter Term via Sub. $(x-alpha)=beta t$.
+#B Zähler eines quadratischen Terms aufspalten: $B x+C = B/2 (2x+p) + (C - (B p)/2)$, erster Teil $-> log$, zweiter $-> arctan$.
 
-Bsp. $integral (x^2-x+2)/(x^3-x^2+x-1)$: Nullstelle $x=1$, Polynomdiv. $-> x^2+1$. Ansatz $(A+B x)/(x^2+1)+C/(x-1)$: $B=0, A=-1, C=1 => ln(x-1)-arctan(x)+C$.
+Bsp. $integral (x^2-x+2)/(x^3-x^2+x-1) dif x$: Nullstelle $x=1$, Polynomdiv. $=> Q=(x-1)(x^2+1)$. Ansatz $C/(x-1)+(A+B x)/(x^2+1)$: $B=0, A=-1, C=1 => ln|x-1|-arctan(x)+c$.
 
 #chapter[Sonstiges]
 
