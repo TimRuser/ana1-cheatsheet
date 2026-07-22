@@ -1295,3 +1295,59 @@ $ P(x)=x^3-x^2+x-1=(x-1)(x^2+1)=(x-1)(x-i)(x+i). $
   $ |a_n-0|=1/n<=1/N<epsilon. $
   Also $a_n -> 0$.
 ]
+
+#block(width: 100%, breakable: false)[
+  #sub[Monotone Konvergenz]
+  *Aufgabe:* Zeige $lim_(n->oo) a^n/(n!) = 0$ für $a>0$.
+
+  Setze $b_n=a^n/n!$. Für $n+1>a$ gilt
+  $ b_(n+1)/b_n=a/(n+1)<1. $
+  Also ist $(b_n)$ schliesslich fallend und durch $0$ nach unten beschränkt, somit $b_n->L$. Da $(b_n)$ beschränkt ist,
+  $ L=lim b_(n+1)=lim a/(n+1) b_n=0. $
+]
+
+#chapter[Algebraic Tricks]
+
+#sub[Polynome und Brüche]
+- *Ausklammern:* $a x+a y=a(x+y)$; nach gemeinsamen Faktoren oder Potenzen suchen.
+- *Binome:* $(a plus.minus b)^2=a^2 plus.minus 2a b+b^2$, $quad a^2-b^2=(a-b)(a+b)$.
+- *Kubiken:* $a^3-b^3=(a-b)(a^2+a b+b^2)$, $quad a^3+b^3=(a+b)(a^2-a b+b^2)$.
+- *Quadratisch ergänzen:* $x^2+b x+c=(x+b/2)^2+c-b^2/4$.
+- *Substitution:* nur $x^2,x^4,dots$ vorhanden $=> u=x^2$; wiederholten Ausdruck $g(x)$ durch $u$ ersetzen.
+- *Brüche:* $A/B plus.minus C/D=(A D plus.minus B C)/(B D)$; vor dem Kürzen faktorisieren.
+- Falls $deg P>=deg Q$: $P/Q=S+R/Q$ mit $deg R<deg Q$ (Polynomdivision).
+- Bei $x->oo$: Zähler und Nenner durch die höchste vorkommende Potenz von $x$ teilen.
+
+#sub[Potenzen und Wurzeln]
+- $a^m a^n=a^(m+n)$, $a^m/a^n=a^(m-n)$, $(a^m)^n=a^(m n)$, $a^(-n)=1/a^n$.
+- Für $a,b>=0$: $sqrt(a b)=sqrt(a)sqrt(b)$; immer $sqrt(a^2)=|a|$.
+- *Konjugiert erweitern:*
+  $ sqrt(A)-sqrt(B)=(A-B)/(sqrt(A)+sqrt(B)) $
+- Unter Wurzeln höchste Potenz ausklammern:
+  $sqrt(x^2 A)=|x|sqrt(A)$.
+- Bruchpotenzen: $root(n, a^m)=a^(m/n)$ (Definitionsbereich beachten).
+
+#sub[Exponential- und Logarithmusformen]
+- $a^x=e^(x ln a)$ für $a>0$; allgemein $f(x)^(g(x))=e^(g(x) ln f(x))$ für $f(x)>0$.
+- $e^u e^v=e^(u+v)$, $e^u/e^v=e^(u-v)$, $e^u-e^v=e^v(e^(u-v)-1)$.
+- $ln(a b)=ln a+ln b$, $ln(a/b)=ln a-ln b$, $ln(a^r)=r ln a$ ($a,b>0$).
+- Gleichungen: $e^u=e^v <=> u=v$; $ln u=ln v <=> u=v$ bei $u,v>0$.
+- Produkte und Potenzen im Logarithmus werden zu Summen und Faktoren; das vereinfacht Ableitungen und Grenzwerte.
+
+#sub[Trigonometrische Umformungen]
+- $sin^2 x+cos^2 x=1$, $quad tan x=sin x/cos x$.
+- $1-cos x=2sin^2(x/2)$, $quad 1+cos x=2cos^2(x/2)$.
+- $sin x=2sin(x/2)cos(x/2)$, $quad sin(2x)=2sin x cos x$.
+- $cos(2x)=cos^2 x-sin^2 x=1-2sin^2 x=2cos^2 x-1$.
+- *Produkt $->$ Summe:*
+  $2sin a cos b=sin(a+b)+sin(a-b)$,
+  $2cos a cos b=cos(a+b)+cos(a-b)$.
+- *Halbwinkelsubstitution* $t=tan(x/2)$:
+  $sin x=(2t)/(1+t^2)$, $cos x=(1-t^2)/(1+t^2)$.
+
+#sub[Betrag, Gleichungen und Kontrolle]
+- $|u|=cases(u & u>=0, -u & u<0)$ und $sqrt(u^2)=|u|$.
+- Für $c>=0$: $|u|=c <=> u=plus.minus c$; $|u|<c <=> -c<u<c$.
+- Nenner beseitigen: mit dem Hauptnenner multiplizieren, aber ausgeschlossene Nullstellen notieren.
+- Wurzelgleichung: Wurzel isolieren, quadrieren, lösen und *jede Lösung einsetzen* (Scheinlösungen möglich).
+- Definitionsbereich zuerst: Nenner $eq.not 0$, Log-Argument $>0$, gerade Wurzel mit Radikand $>=0$.
