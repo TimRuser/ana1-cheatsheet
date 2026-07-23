@@ -900,9 +900,15 @@ Ziel: $R(x)=P(x)/Q(x)$ als Summe einfach integrierbarer Brüche schreiben.
   + *Ansatz* pro Faktor, mit Vielfachheit:
     - $(x-alpha)^m: quad sum_(k=1)^m A_k/(x-alpha)^k$
     - $(x^2+p x+q)^n: quad sum_(k=1)^n (B_k x+C_k)/((x^2+p x+q)^k)$
-  + Mit $Q$ multiplizieren, Koeffizienten vergleichen oder $x$-Werte einsetzen ($x=alpha$: Zuhaltemethode).
+  + Mit $Q$ multiplizieren, Koeffizienten vergleichen oder $x$-Werte einsetzen ($->$ Zuhaltemethode).
   + Gliedweise integrieren.
 ]
+
+*Zuhaltemethode* (nur für einfache Linearfaktoren $(x-alpha)$): Faktor $(x-alpha)$ im Nenner zuhalten (streichen) und $x=alpha$ in den Rest einsetzen:
+$ A = lr(P(x)/(Q(x)\/(x-alpha)) |)_(x=alpha) $
+Bsp. $1/(x(x+1))$: $quad A = lr(1/(x+1)|)_(x=0) = 1$, $quad B = lr(1/x|)_(x=-1) = -1$
+$ ==> 1/(x(x+1)) = 1/x - 1/(x+1) $
+#B *Warum:* Ansatz mit $(x-alpha)$ multiplizieren $->$ jeder andere Term behält einen Faktor $(x-alpha)$ und verschwindet bei $x=alpha$; nur $A$ bleibt stehen. Bei mehrfachen Faktoren $(x-alpha)^m$ liefert es nur $A_m$.
 
 *Grundintegrale.*
 $ integral (dif x)/(x-a) = ln|x-a|, quad integral (dif x)/((x-a)^n) = (-1)/((n-1)(x-a)^(n-1)) $
@@ -1202,7 +1208,14 @@ Erst $y_h$ (homogen) finden, dann Ansatz für $y_p$ nach Störterm $s(x)$:
   $A sin(w u)+B cos(w u)$, $(C_1 sin(w u)+C_2 cos(w u))u^m$,
 )
 
-*Resonanz:* $m=$ Vielfachheit der zugehörigen Nullstelle des char. Polynoms ($0$ bei Polynom, $k$ bei $e^(k u)$, $i w$ bei $sin\/cos$); ohne Resonanz $m=0$. Koeffizienten via ableiten, einsetzen, Koeffizientenvergleich.
+*Resonanz – Exponent $m$ bestimmen:* Zu jedem Störterm gehört eine Testzahl $lambda$:
+- Polynom: $lambda=0$
+- $e^(k u)$: $lambda=k$
+- $sin\/cos(w u)$: $lambda=i w$
+
+$m=$ wie oft $lambda$ Nullstelle des char. Polynoms ist. Ist $lambda$ keine Nullstelle $=>$ keine Resonanz, $m=0$ (Faktor $u^m=1$ fällt weg).
+
+Dann Koeffizienten $C_i$ finden: $y_p$ ableiten, in DG einsetzen, Koeffizientenvergleich.
 
 #sub[Existenz & Eindeutigkeit (Picard)]
 #bx[
